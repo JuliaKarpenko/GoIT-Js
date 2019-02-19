@@ -29,12 +29,11 @@ const error = 'Error';
 const canselMessage = 'We are so sorry, come again!'
 
 let userEnter = prompt('Enter a number');
-
 let isInteger = Number.isInteger(Number.parseInt(userEnter));
 
 
 if (isInteger === true && userEnter > 0 ) {
-  console.log("hi");
+
   if (userEnter <= sharm && userEnter < hurgada) {
     confirm('there is a place in the group sharm. Do you want to choose this gooup?');
   } else if (userEnter <= hurgada) {
@@ -42,8 +41,8 @@ if (isInteger === true && userEnter > 0 ) {
   } else if (userEnter <= taba && userEnter < sharm) {
     confirm('there is a place in the group taba. Do you want to choose this gooup?');
   }
+
 } else if (userEnter == null) {
-  console.log("null");
   alert(canselMessage);
 } else {
   alert(error);

@@ -170,52 +170,108 @@
   и добавлят впереди 0 если необходимо.
 */
 
-let hours = 7;
-let minutes = 3;
-let seconds = 42;
-
-hours = String(hours);
-minutes = String(minutes);
-seconds = String(seconds);
-
-if (hours.length === 1) {
-  hours = '0' + hours;
-}
-
-if (minutes.length === 1) {
-  minutes = '0' + minutes;
-}
-
-if (seconds.length === 1) {
-  seconds = '0' + seconds;
-}
-
-const time = `${hours}:${minutes}:${seconds}`;
-console.log('Time is: ', time);
-
-// ================ with function ===================
-
 // let hours = 7;
 // let minutes = 3;
 // let seconds = 42;
 
 // hours = String(hours);
 // minutes = String(minutes);
-// minutes = String(seconds);
+// seconds = String(seconds);
 
-// function addZerro (val) {
-//   if (val.length === 1) {
-//     return val = '0' + val;
-//   }
+// if (hours.length === 1) {
+//   hours = '0' + hours;
 // }
 
-// addZerro(hours);
-// console.log(hours);
-// addZerro(minutes);
-// addZerro(seconds);
+// if (minutes.length === 1) {
+//   minutes = '0' + minutes;
+// }
 
+// if (seconds.length === 1) {
+//   seconds = '0' + seconds;
+// }
 
 // const time = `${hours}:${minutes}:${seconds}`;
 // console.log('Time is: ', time);
+
+// ================ with function ===================
+/*
+  Время состоит из:
+    часов(hours)
+    минут (minutes)
+    секунд(seconds).
+
+  Время должно всегда выводиться в формате xx:xx:xx
+  Например: 01:12:04 или 14:03:45
+
+  Составляющие времени не гарантированно состоят из 2-х цифр!
+
+  Напишите скрипт который проверяет каждую составляющую,
+  тоесть значения переменных hours, minutes, seconds
+  и добавлят впереди 0 если необходимо.
+*/
+
+// let hours = 7;
+// let minutes = 3;
+// let seconds = 42;
+//
+// const time =  `${hours < 10 ?
+//   '0' + hours : hours}:${minutes < 10 ?
+//   '0' + minutes : minutes}:${seconds <10 ?
+//   '0' + seconds : seconds}`;
+//
+//
+//
+// console.log('Time is: ', time);
+
+
+/*
+  Создайте срипт поиска отелей, где пользователь
+  с помощью prompt должен ввести число от 1 до 5
+
+  Проверить что пользователь ввел именно цифру от 1 до 5
+
+  Если пользователь нажал Cancel, то вывести
+  alert с текстом 'очень жаль, приходите еще!'
+
+  Если было введено что либо кроме чисел 1-5,
+  вывести alert с текстом 'Неверный ввод, возможные варианты 1-5!'
+
+  Если же пользовател ввел валидное число,
+  в зависимости от числа, используя switch,
+  вывести alert с одной из строк:
+
+    1 - "Каталог хостелов"
+    2 - "Каталог бюджетных отелей"
+    3 - "Каталог отелей ***"
+    4 - "Каталог отелей ****"
+    5 - "Каталог лучших отелей"
+*/
+const promptValue = prompt ("Type number from 1-5");
+
+if (Number.isInteger(+promptValue) && (promptValue > 0 && promptValue <= 5) ) {
+  switch(+promptValue) {
+    case 1 :
+    alert ("Каталог хостелов")
+    break;
+    case 2 :
+      alert ("Каталог бюджетных отелей")
+      break;
+    case 3 :
+      alert ("Каталог отелей ***")
+      break;
+    case 4 :
+      alert ("Каталог отелей ****")
+      break;
+    case 5 :
+      alert ("Каталог лучших отелей")
+      break;
+  }
+} else if(promptValue === null) {
+  alert ("очень жаль, приходите еще!")
+
+} else {
+  alert ("Неверный ввод, возможные варианты 1-5!")
+}
+
 
 
