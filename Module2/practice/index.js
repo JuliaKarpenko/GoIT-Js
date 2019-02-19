@@ -90,7 +90,7 @@
 // // -----------------------POP delete elem form the end of array  ----------------
 
 // console.log(' ');
-// console.log('--------------POP delete elem form the end of array-------------- ');
+// console.log('\n--------------POP delete elem form the end of array-------------- ');
 
 // let popArray = clients;
 // popArray.pop('END');
@@ -294,3 +294,19 @@
 */
 
 const numbers = [12, 15, 25, 37, 41];
+
+let minArr = numbers[0];121
+let maxArr = numbers[numbers.length-1];
+let userInput;
+
+userInput = prompt(`Enter a number in range from ${minArr} to ${maxArr}`);
+
+if (isNaN(userInput)) {
+  alert('It is not a number');
+} else if (numbers.includes(Number(userInput)) === true ) {
+  alert ('You are rigth!');
+} else {
+  alert ('Sorry, try again');
+}
+
+// ------------------------------------------
