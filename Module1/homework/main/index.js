@@ -39,15 +39,15 @@ let userName = prompt(loginMessage);
 if (userName == adminLogin) {
     let userPassWord = prompt(passwordMessage);
 
-    if (userPassWord == null) {
+    if (userPassWord === null) {
         alert(cancel);
-    } else if (userPassWord == adminPassword) {
+    } else if (userPassWord === adminPassword) {
         alert(autrorizationComplite)
     } else {
         alert(passwordError);
     }
     
-} else if (userName == null ){
+} else if (userName === null ){
     alert(cancel);
 } else {
     alert(loginError);
