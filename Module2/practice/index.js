@@ -295,7 +295,7 @@
 
 const numbers = [12, 15, 25, 37, 41];
 
-let minArr = numbers[0];121
+let minArr = numbers[0];
 let maxArr = numbers[numbers.length-1];
 let userInput;
 
