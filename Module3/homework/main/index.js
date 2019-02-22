@@ -41,6 +41,7 @@ const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
 const validError = "Ошибка! Логин должен быть от 4 до 16 символов";
 const addLogiSucces = "Логин успешно добавлен!";
 const addLoginError = "Такой логин уже используется!";
+let UserInput = prompt("Enter your login, please");
 
 //      isLoginValid function
 const isLoginValid = function(login) {
@@ -76,8 +77,4 @@ const addLogin = function(allLogins, login) {
 };
 
 // // Вызовы функции для проверки
-addLogin(logins, 'Ajax'); // 'Логин успешно добавлен!'
-
-addLogin(logins, 'robotGoogles'); // 'Такой логин уже используется!'
-addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
-addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+addLogin(logins, UserInput); // 'Логин успешно добавлен!'
