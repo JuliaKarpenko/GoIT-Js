@@ -497,3 +497,139 @@
 // console.log(
 //   filterFromArray([12, 4, 3, 8, 17], 3, 29, 18, 4)
 // ); // [12, 8, 17]
+
+// ----------------------------------
+
+// var i = 0, j = 0;
+// // Желаемое количество строк
+// var max = 5;
+// var space = "",
+//     star = "";
+
+// while (i < max) {
+//     space = "";
+//     star = "";
+//     for (j = 0; j < max - i; j++) space += " ";
+//     for (j = 0; j < 2 * i + 1; j++) star += "*";
+//     console.log(space + star);
+//     i++;
+// }
+// ----------------------------------
+
+// function matrixArray(rows,columns){
+//   var arr = new Array();
+//   for( var i=0; i<rows; i++){
+//     arr[i] = new Array();
+//     for( var j=0; j < columns; j++){
+//       arr[i][j] = i + j + 1;//вместо i+j+1 пишем любой наполнитель. В простейшем случае - null
+//     }
+//   }
+//   return arr;
+// }
+// // var myMatrix = matrixArray(3,3);
+// console.log( matrixArray(3,3));
+// ----------------------------------
+
+// var n = 4, m = 4;
+// var mas = [];
+// for (var i = 0; i < m; i++){
+//     mas[i] = [];
+//     for (var j = 0; j < n; j++){
+//         mas[i][j] = 0;
+// }}
+// console.log(mas);
+
+// ----------------------------------
+
+// let empty = [];
+// let teamNumber = +prompt('Введите количество команд');
+// let teamAmount = +prompt('Какое количество играков?');
+// let first = [];
+
+// for(let j = 0; j < teamNumber; j++){
+//     let first = [];
+//     for(let i = 1; i <= teamAmount; i++) {
+//       first.push( i + j * teamAmount);
+//     }
+//     empty.push(first);
+// }
+// console.log(empty);
+
+// --------------------------------------
+
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+
+// let sum;
+// const sumTo = function(num) { 
+//   sum = num;
+//   for (let i = 1; i < num; i++) {
+//     let a = num - i;
+//     sum += a;
+//   }
+//   return sum; 
+// } 
+// console.log('sum = ',sumTo(100));
+// ------------------------------------------
+
+// const sumTo = function(num) {
+//   let sum = 1;
+//   for (let i = 2; i <= num; i++) {
+//    sum += i;
+//   }
+//   return sum;
+//  }
+//  console.log(sumTo(100));
+
+// ---------------------------------------------
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+
+// let sum;
+// const sumTo = function(num) { 
+//   sum = num;
+//   for (let i = 1; i < num; i++) {
+//     let a = num - i;
+//     sum += a;
+//     console.log(a);
+//   }
+//   return sum; 
+// } 
+// console.log('sum = ',sumTo(5));
+
+// // ------------------------------------------
+
+// const sumTo = function(num) {
+//   let sum = 1;
+//   for (let i = 2; i <= num; i++) {
+//    sum += i;
+//   }
+//   return sum;
+//  }
+//  console.log(sumTo(100));
+
+// function sumTo(num) { 
+//   function recSum(num, i, sum) {
+//     if (i > num ) {
+//       return sum;
+//     } else {
+//       return recSum(num, i+1, sum+i);
+//     }
+//   }
+//   return recSum(num, 2, 1);
+//  }
+//  console.log(sumTo(4));
+
+// // ---------------------------
+
+//  function sumTo(n) {
+//   if (n == 1) return 1;
+//   return n + sumTo(n - 1);
+// }
+
+// console.log('sum = ',sumTo(5));
+// -----------------------------------------------
