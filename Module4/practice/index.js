@@ -152,8 +152,6 @@
 // console.log(getUserID("aaa"));
 // console.log(updateUser(getUserID("aaa"), "Max", users));
 
-
-
 // // - выводит содержимое объекта user в формате ключ:значение
 // // используя Object.entries и for...of
 
@@ -218,7 +216,6 @@
 //  }
 
 //  console.log(getAllUsers(users));
-
 
 // --------------------practic--------------------------------
 
@@ -321,137 +318,555 @@
 // console.log(maxValue);
 
 
-// ==================Домашка
+// ------------------------------Task 3------------------------------
 
-/*
-  Создайте скрипт кассира, который получает список продуктов и деньги, 
-  подсчитывает общую стоимость продуктов, и в зависимости от того хватает 
-  денег или нет, уведомляет покупателя о результате.
+/*  
+  Напишите функцию countProps(obj),
+  считающую кол-во свойств в объекте.
+  Функция возвращает количество свойств.
 */
 
-/* Есть база данных товаров, в формате "имя-товара":"цена за одну единицу" */ 
-const products = {
-  bread: 10,
-  milk: 15,
-  apples: 20,  
-  chicken: 50,
-  cheese: 40,
-};
+// Вызовы функции для проверки
 
-/* 
-  Необходимо создать функцию-конструктор Cashier.
+// const dog = {
+//   name: 'Yara',
+//   age: 3
+// }
+// let counter = 0;
+// const countProps = function (obj) { 
+//   for (key in obj) {
+//     counter++;
+//   }
+//   return counter;
+// };
+
+// console.log(
+//   countProps({})
+// ); // 0
+
+// console.log(
+//   countProps({a: 1, b: 3, c: 'hello'})
+// ); // 3
+
+
+// ---------------------------------Task 4 ------------------------------
+
+/*  
+  Создайте функцию isObjectEmpty(obj), которая получает 
+  один аргумент obj - объект, и проверяет пуст ли он (есть ли в нем свойства).
   
-  Поля будущего объекта кассира (🔔 объявляются как this.имя_поля в конструкторе): 
-    - name - строка, имя кассира, передается при вызове конструктора
-    
-    - productDatabase - объект база данных продуктов, передается при вызове конструктора
-    
-    - customerMoney - число, сумма введенная пользователем при запросе денег, всегда начинается с 0 
-    
-    - getCustomerMoney(value) - метод, получает число, деньги покупателя, и записывает его в поле customerMoney.
-    
-    - countTotalPrice(order) - метод, получает объект списка покупок, считает общую стоимость покупок.
-      🔔 Ключи объекта order есть в объекте productDatabase. Из order берем количество единиц продукта,
-         а из productDatbase цену за одну штуку и умножаем, так получаем цену одного типа продукта в заказе.
-         Чтобы посчитать цену для всех продуктов заказа используйте цикл, перебрав все ключи order.
-     
-    - countChange(totalPrice) - метод, считает сдачу, разницу между общей суммой покупок и деньгами покупателя.
-        * Обязательно проверьте что customerMoney не меньше чем значение totalPrice
-        * Если денег было передано достаточно, возвращает разницу денег.
-        * Если в customerMoney меньше денег чем в totalPrice, возвращает null 
-        
-    - onSuccess(change) - метод, выводит в консоль строку `Спасибо за покупку, ваша сдача ${change}!`.
-    
-    - onError() - метод, выводит в консоль строку 'Очень жаль, вам не хватает денег на покупки'   
-    
-    - reset() - метод, сбрасывает поле customerMoney 0.
+  Возвращает true если объект пустой, false если не пустой.
+
 */
-// 🔔 не забывайте о this при обращении к свойствам и методам будущего объекта
 
-function Cashier(name, productDatabase) {
-  this.name = name;
-  this.productDatabase = productDatabase;
-  this.customerMoney = 0;
-  this.getCustomerMoney = function(value) {
-    this.customerMoney = value;
-  };
-  this.countTotalPrice = function(order) {
-    let totalPrice = 0;
-    for (let keys in order) {
-      totalPrice += order[keys] * this.productDatabase[keys];
-    }
-    return totalPrice;
-  };
-  this.countChange = function(totalPrice) {
-    let change = 0;
-    if (this.customerMoney >= totalPrice) {
-      change = this.customerMoney - totalPrice;
-      return change;
-    } else {
-      return null;
-    }
-  }
-  this.onSuccess = function(change) {
-    if (change !== null) {
-      alert(`Спасибо за покупку, ваша сдача ${change}!`);
-    }
-  }
-  this.onError = function(change) {
-    if (change == null)
-    alert('Очень жаль, вам не хватает денег на покупки');
-  }
-  this.reset = function(customerMoney) {
-    customerMoney = 0;
-  }
-};
+// const isObjectEmpty = function (obj) {
+//     if (Object.keys(obj).length === 0) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+// };
 
-/* Заказ пользователя хранится в виде объекта следующего формата. "имя-продукта":"количество-единиц" */
-const order = {
-  bread: 2,
-  milk: 2,
-  apples: 1,
-  cheese: 1
-};
+// // Вызовы функции для проверки
+// console.log(
+//   isObjectEmpty({})
+// ); // true
 
-/* Пример использования */
-const mango = new Cashier('Mango', products);
+// console.log(
+//   isObjectEmpty({a: 1})
+// ); // false
 
-// Проверяем исходные значения полей
-console.log(mango.name); // Mango
-console.log(mango.productDatabase); // ссылка на базу данных продуктов (объект products)
-console.log(mango.customerMoney); // 0
+// console.log(
+//   isObjectEmpty({a: 1, b: 2})
+// ); // false
 
-// Вызываем метод countTotalPrice для подсчета общей суммы
-// передавая order - список покупок пользователя
-const totalPrice = mango.countTotalPrice(order);
+// ---------------------------------Task 5 ------------------------------
 
-// Проверям что посчитали
-console.log(totalPrice); // 110
+/*  
+  Напишите функцию countTotalSalary(salaries),
+  получающую объект и считающую общую сумму запрплаты работников.
+  
+  Каждое поле объекта передаваемого в функцию, имеет вид "имя":"зарплата"
+  
+  Функция возвращает общую сумму зарплаты.
+*/
 
-// Вызываем getCustomerMoney для запроса денег покупателя
-mango.getCustomerMoney(300);
+// const countTotalSalary = function (salaries) {
+//   let values = Object.values(salaries);
+//   console.log(values);
+//   let sum = 0;
+//   for (let key of values) {
+//     sum += key;
+//   }
+//   return sum;
+// }
 
-// Проверяем что в поле с деньгами пользователя
-console.log(mango.customerMoney); // 300
+// // Вызовы функции для проверки
+// console.log(
+//   countTotalSalary({})
+// ); // 0
 
-// Вызываем countChange для подсчета сдачи
-const change = mango.countChange(totalPrice);
+// console.log(
+//   countTotalSalary({
+//     mango: 100,
+//     poly: 150,
+//     alfred: 80
+//   })
+// ); // 330
 
-// Проверяем что нам вернул countChange
-console.log(change); // 190
+// ---------------------------------Task 6 ------------------------------
 
-// Проверяем результат подсчета денег
-if(change !== null) {
-   // При успешном обслуживании вызываем метод onSuccess
-  mango.onSuccess(change); // Спасибо за покупку, ваша сдача 190
-} else {
-  // При неудачном обслуживании вызываем метод onError   
-  mango.onError(); // Очень жаль, вам не хватает денег на покупки
-}
+/*  
+  Напишите функцию getAllPropValues(arr, prop), 
+  которая получает массив объектов и имя ключа, 
+  возвращает массив значений определенного поля prop
+  из каждого объекта в массиве
+*/
 
-// Вызываем reset при любом исходе обслуживания
-mango.reset();
+// const getAllPropValues = function (arr, prop) {
+//   let newArr = [];
+//   for (i = 0; i < arr.length; i++) {
+//     newArr.push(arr[i][prop]);
+//   }
+//   return newArr;
+// };
 
-// Проверяем значения после reset
-console.log(mango.customerMoney); // 0
+// const users = [
+//   { name: 'Poly', age: 7, mood: 'happy' },
+//   { name: 'Mango', age: 4, mood: 'blissful'},
+//   { name: 'Ajax', age: 3, mood: 'tired' }
+// ];
 
+// // Вызовы функции для проверки
+// console.log(
+//   getAllPropValues(users, 'name')
+// ); // ['Poly', 'Mango', 'Ajax']
+
+// console.log(
+//   getAllPropValues(users, 'mood')
+// ); // ['happy', 'blissful', 'tired']
+
+// console.log(
+//   getAllPropValues(users, 'active')
+// ); // []
+
+// ---------------------------------Task 7 ------------------------------
+
+/*  
+  Напишите код, который бы  с помощью 
+  функции-конструкора User, позволял создавать 
+  объекты пользователя со следующим свойствами:
+    - name - строка (имя)
+    - isActive - буль (активен)
+    - age - число (возраст)
+    - friends - число (кол-во друзей)
+
+  Имя, активность, возраст и друзей, необходимо передать 
+  как аргументы при вызове конструктора.
+  
+  Добавить метод getUserInfo(), которая, выводит строку:
+  `User ${имя} is ${возраст} years old and has ${кол-во друщзей} friends`
+
+  Создать несколько объектов пользователя User и с помощью 
+  функции getUserInfo вывести строку в консоль.
+*/
+
+// const User = function (name, isActive, age, friends) {
+//   this.name = name,
+//   this.isActive = isActive,
+//   this.age = age,
+//   this.friends = friends,
+//   this.getUserIngo = function() {
+//     console.log(`User ${this.name} is ${this.age} years old and has ${this.friends} friends`);
+//   };
+// };
+
+// const newUser = new User("Mango", true, 7, 10);
+// console.log(newUser);
+// console.log(newUser.getUserIngo());
+
+
+// ---------------------------------Task 8 ------------------------------
+
+/*  
+  Расставьте отсутствующие this в методах объекта store
+*/
+
+// /* 
+  
+  // const store = {
+  //   products: ['bread', 'cheese', 'milk', 'apples'],
+  //   managers: ['poly', 'mango', 'ajax'],
+  //   addManager(manager) {
+  //     this.managers.push(manager);
+      
+  //     console.log(this.managers);
+  //   },
+  //   removeManager(manager) {
+  //     const idx = this.managers.indexOf(manager);
+      
+  //     this.managers.splice(idx, 1);
+      
+  //     console.log(this.managers);
+  //   },
+  //   getProducts() {
+  //     console.log(this.products);
+      
+  //     return this.products;
+  //   }
+  // }
+  
+  // store.addManager('chelsey'); // ['poly', 'mango', 'ajax', 'chelsey']
+  
+  // store.removeManager('mango'); // ['poly', ajax', 'chelsey']
+  
+  // store.getProducts(); // ['bread', 'cheese', 'milk', 'apples']
+
+// ---------------------------------Task 9 ------------------------------
+
+/*  
+  Расставьте отсутствующие this в конструкторе объектов Account
+*/
+
+// function Account(login, password, type = "regular") {
+//   this.login = login;
+//   this.password = password;
+//   this.type = type;
+
+//   this.changePassword = function(newPassword) {
+//     password = newPassword;
+
+//     console.log(password);
+//   };
+
+//   this.getAccountInfo = function() {
+//     console.log(`
+//       Login: ${login}, 
+//       Pass: ${password}, 
+//       Type: ${type}
+//     `);
+//   };
+// }
+
+// const account = new Account("Mango", "qwe123", "premium");
+
+// console.log(account.login); // 'Mango'
+// console.log(account.password); // 'qwe123'
+// console.log(account.type); // 'premium'
+
+// account.changePassword("asdzxc"); // 'asdzxc'
+
+// account.getAccountInfo(); // Login: 'Mango', Pass: 'asdzxc', Type: 'premium'
+
+
+// // ==================Домашка
+
+// /*
+//   Создайте скрипт кассира, который получает список продуктов и деньги,
+//   подсчитывает общую стоимость продуктов, и в зависимости от того хватает
+//   денег или нет, уведомляет покупателя о результате.
+// */
+
+// /* Есть база данных товаров, в формате "имя-товара":"цена за одну единицу" */
+// const products = {
+//   bread: 10,
+//   milk: 15,
+//   apples: 20,
+//   chicken: 50,
+//   cheese: 40,
+// };
+
+// /*
+//   Необходимо создать функцию-конструктор Cashier.
+
+//   Поля будущего объекта кассира (🔔 объявляются как this.имя_поля в конструкторе):
+//     - name - строка, имя кассира, передается при вызове конструктора
+
+//     - productDatabase - объект база данных продуктов, передается при вызове конструктора
+
+//     - customerMoney - число, сумма введенная пользователем при запросе денег, всегда начинается с 0
+
+//     - getCustomerMoney(value) - метод, получает число, деньги покупателя, и записывает его в поле customerMoney.
+
+//     - countTotalPrice(order) - метод, получает объект списка покупок, считает общую стоимость покупок.
+//       🔔 Ключи объекта order есть в объекте productDatabase. Из order берем количество единиц продукта,
+//          а из productDatbase цену за одну штуку и умножаем, так получаем цену одного типа продукта в заказе.
+//          Чтобы посчитать цену для всех продуктов заказа используйте цикл, перебрав все ключи order.
+
+//     - countChange(totalPrice) - метод, считает сдачу, разницу между общей суммой покупок и деньгами покупателя.
+//         * Обязательно проверьте что customerMoney не меньше чем значение totalPrice
+//         * Если денег было передано достаточно, возвращает разницу денег.
+//         * Если в customerMoney меньше денег чем в totalPrice, возвращает null
+
+//     - onSuccess(change) - метод, выводит в консоль строку `Спасибо за покупку, ваша сдача ${change}!`.
+
+//     - onError() - метод, выводит в консоль строку 'Очень жаль, вам не хватает денег на покупки'
+
+//     - reset() - метод, сбрасывает поле customerMoney 0.
+// */
+// // 🔔 не забывайте о this при обращении к свойствам и методам будущего объекта
+
+// function Cashier(name, productDatabase) {
+//   this.name = name;
+//   this.productDatabase = productDatabase;
+//   this.customerMoney = 0;
+//   this.getCustomerMoney = function(value) {
+//     this.customerMoney = value;
+//   };
+//   this.countTotalPrice = function(order) {
+//     let totalPrice = 0;
+//     for (let keys in order) {
+//       totalPrice += order[keys] * this.productDatabase[keys];
+//     }
+//     return totalPrice;
+//   };
+//   this.countChange = function(totalPrice) {
+//     let change = 0;
+//     if (this.customerMoney >= totalPrice) {
+//       change = this.customerMoney - totalPrice;
+//       return change;
+//     } else {
+//       return null;
+//     }
+//   }
+//   this.onSuccess = function(change) {
+//     if (change !== null) {
+//       alert(`Спасибо за покупку, ваша сдача ${change}!`);
+//     }
+//   }
+//   this.onError = function(change) {
+//     if (change == null)
+//     alert('Очень жаль, вам не хватает денег на покупки');
+//   }
+//   this.reset = function(customerMoney) {
+//     customerMoney = 0;
+//   }
+// };
+
+// /* Заказ пользователя хранится в виде объекта следующего формата. "имя-продукта":"количество-единиц" */
+// const order = {
+//   bread: 2,
+//   milk: 2,
+//   apples: 1,
+//   cheese: 1
+// };
+
+// /* Пример использования */
+// const mango = new Cashier('Mango', products);
+
+// // Проверяем исходные значения полей
+// console.log(mango.name); // Mango
+// console.log(mango.productDatabase); // ссылка на базу данных продуктов (объект products)
+// console.log(mango.customerMoney); // 0
+
+// // Вызываем метод countTotalPrice для подсчета общей суммы
+// // передавая order - список покупок пользователя
+// const totalPrice = mango.countTotalPrice(order);
+
+// // Проверям что посчитали
+// console.log(totalPrice); // 110
+
+// // Вызываем getCustomerMoney для запроса денег покупателя
+// mango.getCustomerMoney(300);
+
+// // Проверяем что в поле с деньгами пользователя
+// console.log(mango.customerMoney); // 300
+
+// // Вызываем countChange для подсчета сдачи
+// const change = mango.countChange(totalPrice);
+
+// // Проверяем что нам вернул countChange
+// console.log(change); // 190
+
+// // Проверяем результат подсчета денег
+// if(change !== null) {
+//    // При успешном обслуживании вызываем метод onSuccess
+//   mango.onSuccess(change); // Спасибо за покупку, ваша сдача 190
+// } else {
+//   // При неудачном обслуживании вызываем метод onError
+//   mango.onError(); // Очень жаль, вам не хватает денег на покупки
+// }
+
+// // Вызываем reset при любом исходе обслуживания
+// mango.reset();
+
+// // Проверяем значения после reset
+// console.log(mango.customerMoney); // 0
+
+// const user = {
+//   name: 'Baron',
+// };
+
+// const user1 = {
+//   name: 'Vasya',
+// };
+
+// const myFunc = function (message = '') {
+//   console.log('this in myFunc:', this);
+//   return `Hello my name is ${this.name}. ${message}`;
+// };
+// // console.log(myFunc()); // 'name' of undefined
+// const result = myFunc.call(user, 'How are you?');
+// console.log(result);
+
+// user.getMyname = myFunc;
+// console.log('call user1 to user.getMyName:',user.getMyname.call(user1));
+
+// console.log('from user: ', user.getMyname());
+
+// const action = function (callback) {
+//   return callback('how are you', 'dsdsdsds');
+// };
+
+// console.log(action(myFunc.bind(user1)));
+
+// ===================== practic 26.02
+// const dogs = {
+//   name: 'Yara',
+//   breed: 'Shepherd',
+// }
+
+// const cat = {
+//   name: 'Minu',
+//   breed: 'Scottish',
+// }
+
+// const breedFunct = function () {
+//   return `The animal breed is ${this.breed}`
+// }
+
+// const action = function(callback) {
+//   return callback();
+// }
+
+// console.log(action(breedFunct.bind(dogs)));
+// console.log(action(breedFunct.bind(cat)));
+
+// console.log('call function with dogs object = ', breedFunct.call(dogs));
+// console.log('apply function with dogs object = ', breedFunct.apply(dogs));
+
+// console.log('call function with cat object = ', breedFunct.call(cat));
+// console.log('apply function with cat object = ', breedFunct.apply(cat));
+
+// ---------------Function Constructor
+
+// function Dog(name = "Poops", age, breed, color, male, vegenation, facebook) {
+//   this.name = name;
+//   this.age = age;
+//   this.breed = breed;
+//   this.color = color;
+//   this.male = male;
+//   this.vegenation = vegenation;
+//   this.facebook = facebook;
+//   this.yep = function() {
+//     return 'wwwwwwwwwooooooofffff'
+//   }
+// }
+
+// const dog = new Dog(undefined, 2, "chau-chau", "black", "female", true, 'http://facebook.com/poops');
+// console.log(dog);
+
+// console.log(dog.yep());
+
+// dog.getAboutData = function () {
+//   return `name: ${this.name}; age: ${this.age}, breed: ${this.breed}`
+// }
+// console.log(dog.getAboutData());
+
+// const dog2 = new Dog(undefined, 5, "боксер", "orange", "male", false, undefined);
+// console.log(dog2);
+
+// const numbers = [1, 2, 3, 4, 5]; //not our mass
+
+// // const ourArray =(transfer,numbersClone) => {//new mass
+// //   let newMass = []; //future mass
+// //   for (const numbersCloneElement of numbersClone) { //iteration of new mass
+// //     const newElement = transfer(numbersCloneElement); // rewrite transfer element
+// //     newMass.push(newElement); // rewrite new mass
+// //   }
+// //   return newMass; // return parametrs in numbersclone
+// // };
+
+// const double = (number) => number *2; // our function
+
+// const triple = (number) => number *3;
+// // const triple = function (number) {     //our function
+// //   return number * 3;
+// // };
+// // const doubledNumbers = ourArray(double, numbers); // we need results
+// // console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+// // const tripledNumbers = ourArray(triple,numbers);
+// // console.log(tripledNumbers); // [3, 6, 9, 12, 15]
+
+// const newMass = [];
+// numbers.map(function(el) { return newMass.push(el*2) });
+// newMass2 = [];
+// numbers.map(function(el) { return newMass2.push(triple(el))});
+
+// // console.log(numbers);
+// // console.log(newMass);
+// // console.log(newMass2);
+
+// const values = [9, 65, 3423, 234, 523];
+
+// const newArr = values.map(function(el, index) {
+//   console.log(`${index} : ${el}`);
+//   return el * 2;
+// })
+// const newArr3 = values.map(double);
+
+// console.log('newArr', newArr);
+// console.log('newArr3', newArr3);
+
+// ---------------------example work map
+
+
+// const numbers = [1, 2, 3, 4, 5]; 
+
+// const mapExample = function(arr, transfer) {
+//   const numbersNew = [];
+//   for (const el of arr) {
+//     const elNew = transfer(el);
+//     numbersNew.push(elNew);
+//   }
+//   return numbersNew;
+// }
+
+// const arrowFunction = (number) => number * 4;
+
+// console.log(mapExample(numbers, arrowFunction));
+
+// ===============this in arrow function
+
+// const hotel = {
+//   name: 'hello',
+//   showThis() {
+//     console.log('this in showthis: ', this);
+
+//     const fn = () => {
+//       console.log('this in fn: ', this);
+//     };
+
+//     console.log('fn function вызов', fn());
+//   }
+// }
+
+// hotel.showThis();
+
+// ---
+// const hotel = {
+//   name: 'hello',
+//   showThis() {
+//     console.log('this in showthis: ', this);
+//   },
+// };
+
+// const fn = function(callback) {
+//   console.log('this in fn: ', this);
+//   console.log('callback: ', callback);
+//   callback();
+// };
+
+// hotel.newFn = fn;
+
+// hotel.newFn(hotel.showThis);

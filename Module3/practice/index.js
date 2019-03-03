@@ -633,3 +633,48 @@
 
 // console.log('sum = ',sumTo(5));
 // -----------------------------------------------
+
+// const numbers = [1, [2, 3], 7];
+
+// const flatten = function fn(arr) {
+//   const flatArr = [];
+
+//   for(let elem of arr) { 
+//     const isArray = Array.isArray(elem);
+//     if (isArray) {
+//       for(let x of elem) {
+//         flatArr.push(x);
+//       }
+//     } else {
+//       flatArr.push(elem);
+//     }
+//   }
+
+//   return flatArr;
+// }
+
+// const flat = flatten(numbers);
+// console.log(flat);
+
+
+const numbers = [1, [2, 3, [2, 3, [2, 3, [2, 3, [2, 3]]]]], 4, [5, 6], 7];
+const number = [1, 4, [5, 6], 7];
+
+const flatten = function self(arr) {
+  console.log('self call arr:', arr);
+  let flatArr = [];
+
+  for(let elem of arr) { 
+    const isArray = Array.isArray(elem);
+    if (isArray) {
+      flatArr = flatArr.concat(self(elem));
+    } else {
+      flatArr.push(elem);
+    }
+  }
+
+  return flatArr;
+}
+
+const flat = flatten(numbers);
+console.log(flat);
