@@ -105,7 +105,13 @@ const users = [
 const getAllSkills = arr => arr
 .reduce((acc, arr) => arr.skills ? acc.concat(arr.skills) : acc, [])
 .sort()
-.filter((item, pos, arr)=> !pos || item != arr[pos -1]);
+.filter((item, pos, arr) => !pos || item != arr[pos -1]);
+// .forEach(function(el) {
+//   let arr = [];
+//   if(!arr.includes(el)) {
+//     arr.push(el);
+//   } 
+// })
 
 
 console.log(getAllSkills(users));
