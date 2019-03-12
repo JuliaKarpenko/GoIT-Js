@@ -1,3 +1,4 @@
+"use strict";
 // const users = ["Alex", "Nikolay", "Helen", "5", "hi"];
 // let i = 0;
 // while (i < users.length) {
@@ -617,7 +618,7 @@
 //     if (i > num ) {
 //       return sum;
 //     } else {
-//       return recSum(num, i+1, sum+i);
+//       return recSum(num, i + 1, sum + i);
 //     }
 //   }
 //   return recSum(num, 2, 1);
@@ -657,24 +658,53 @@
 // console.log(flat);
 
 
-const numbers = [1, [2, 3, [2, 3, [2, 3, [2, 3, [2, 3]]]]], 4, [5, 6], 7];
-const number = [1, 4, [5, 6], 7];
+// const numbers = [1, [2, 3, [2, 3, [2, 3, [2, 3, [2, 3]]]]], 4, [5, 6], 7];
+// const number = [1, 4, [5, 6], 7];
 
-const flatten = function self(arr) {
-  console.log('self call arr:', arr);
-  let flatArr = [];
+// const flatten = function self(arr) {
+//   console.log('self call arr:', arr);
+//   let flatArr = [];
 
-  for(let elem of arr) { 
-    const isArray = Array.isArray(elem);
-    if (isArray) {
-      flatArr = flatArr.concat(self(elem));
-    } else {
-      flatArr.push(elem);
-    }
-  }
+//   for(let elem of arr) { 
+//     const isArray = Array.isArray(elem);
+//     if (isArray) {
+//       flatArr = flatArr.concat(self(elem));
+//     } else {
+//       flatArr.push(elem);
+//     }
+//   }
 
-  return flatArr;
-}
+//   return flatArr;
+// }
 
-const flat = flatten(numbers);
-console.log(flat);
+// const flat = flatten(numbers);
+// console.log(flat);
+
+let r = [234, 5, 67, 65, 23, 6];
+// // розпис метода reduce
+// const sumOfArray = function (arr) {
+//   //Змінна котра акомулює суму
+//   let accomulator = 0;
+//   //Пробігаємось по всім індексам об'єкта
+//   for (const index of arr) {
+//     //перезаписуємо акомулятор
+//     accomulator = accomulator + index;
+//   }
+//   return accomulator;
+// };
+
+// console.log(sumOfArray(r));
+
+// let arr = [234, 5, 67, 65, 23, 6];
+// розпис метода reduce
+
+// let summ = r.reduce((acc, value) => acc + value, 0);
+// console.log(summ);
+
+const numbers = [1, 1, 1];
+
+const summ2 = numbers.reduce((acc, value) => acc + value, 0);
+console.log(summ2); 
+
+const summ3 = numbers.reduce((acc, value) => acc + value, '');
+console.log(summ3); 
