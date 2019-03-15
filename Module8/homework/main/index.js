@@ -97,7 +97,7 @@ const MAIN_BLOCK = document.querySelector('.js-image-gallery');
 document.addEventListener("DOMContentLoaded", function () {
     const FULL_VIEW = document.createElement('div');
     FULL_VIEW.classList.add('fullview');
-    let fullViewImgBlock = `<li><img class="fullViewImg" style='width:900px; height: 600px' src=${galleryItems[0].src} data-preview=${galleryItems[0].preview} data-fullview=${galleryItems[0].fullview} alt='${galleryItems[0].alt}'></li>`;
+    let fullViewImgBlock = `<li><img class="fullViewImg" style='height: 430px' src=${galleryItems[0].src} data-preview=${galleryItems[0].preview} data-fullview=${galleryItems[0].fullview} alt='${galleryItems[0].alt}'></li>`;
     FULL_VIEW.innerHTML = fullViewImgBlock;
     MAIN_BLOCK.appendChild(FULL_VIEW);
     FULL_VIEW.style.listStyleType = "none";
