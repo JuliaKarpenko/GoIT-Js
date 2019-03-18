@@ -55,38 +55,38 @@
 const galleryItems = [{
 
         src: '../../../img/img1.jpg',
-        preview: 'img/preview-1.jpeg',
-        fullview: 'img/fullview-1.jpeg',
+        preview: '../../../img/img1.jpg',
+        fullview: '../../../img/img1.jpg',
         alt: "alt text 1"
     },
     {
         src: '../../../img/img2.jpg',
-        preview: 'img/preview-2.jpeg',
-        fullview: 'img/fullview-2.jpeg',
+        preview: '../../../img/img2.jpg',
+        fullview: '../../../img/img2.jpg',
         alt: "alt text 2"
     },
     {
         src: '../../../img/img3.jpg',
-        preview: 'img/preview-3.jpeg',
-        fullview: 'img/fullview-3.jpeg',
+        preview: '../../../img/img3.jpg',
+        fullview: '../../../img/img3.jpg',
         alt: "alt text 3"
     },
     {
         src: '../../../img/img4.jpg',
-        preview: 'img/preview-4.jpeg',
-        fullview: 'img/fullview-4.jpeg',
+        preview: '../../../img/img4.jpg',
+        fullview: '../../../img/img4.jpg',
         alt: "alt text 4"
     },
     {
         src: '../../../img/img5.jpg',
-        preview: 'img/preview-5.jpeg',
-        fullview: 'img/fullview-5.jpeg',
+        preview: '../../../img/img5.jpg',
+        fullview: '../../../img/img5.jpg',
         alt: "alt text 5"
     },
     {
         src: '../../../img/img6.jpg',
-        preview: 'img/preview-6.jpeg',
-        fullview: 'img/fullview-6.jpeg',
+        preview: '../../../img/img6.jpg',
+        fullview: '../../../img/img6.jpg',
         alt: "alt text 6"
     },
 ];
@@ -116,7 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let fullViewImg = document.querySelector('.fullViewImg');
     MAIN_BLOCK.addEventListener('click', function(e) {
-        fullViewImg.src = e.target.src;
+      if( e.target.nodeName !== "IMG") return;
+        fullViewImg.src = e.target.dataset.fullview;
     });
 });
 
