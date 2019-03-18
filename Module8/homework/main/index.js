@@ -94,13 +94,26 @@ const galleryItems = [{
 const MAIN_BLOCK = document.querySelector('.js-image-gallery');
 
 
+// <div class="image-gallery js-image-gallery">
+// <div class="fullview">
+//   <!-- Если выбран первый элемент из preview -->
+//   <img src="img/fullview-1.jpeg" alt="alt text 1">
+// </div>
+// <!-- li будет столько, сколько объектов в массиве картинок. Эти 3 для примера -->
+// <ul class="preview">
+//   <li><img src="img/preview-1.jpeg" data-fullview="img/fullview-1.jpeg" alt="alt text 1"></li>
+//   <li><img src="img/preview-2.jpeg" data-fullview="img/fullview-2.jpeg" alt="alt text 2"></li>
+//   <li><img src="img/preview-3.jpeg" data-fullview="img/fullview-3.jpeg" alt="alt text 3"></li>
+// </ul>
+// </div>   
+
 document.addEventListener("DOMContentLoaded", function () {
     const FULL_VIEW = document.createElement('div');
     FULL_VIEW.classList.add('fullview');
-    let fullViewImgBlock = `<li><img class="fullViewImg" style='height: 430px' src=${galleryItems[0].src} data-preview=${galleryItems[0].preview} data-fullview=${galleryItems[0].fullview} alt='${galleryItems[0].alt}'></li>`;
+    let fullViewImgBlock = `<img class="fullViewImg" style='height: 430px' src=${galleryItems[0].src} data-preview=${galleryItems[0].preview} data-fullview=${galleryItems[0].fullview} alt='${galleryItems[0].alt}'>`;
     FULL_VIEW.innerHTML = fullViewImgBlock;
     MAIN_BLOCK.appendChild(FULL_VIEW);
-    FULL_VIEW.style.listStyleType = "none";
+    // FULL_VIEW.style.listStyleType = "none";
     FULL_VIEW.style.textAlign = "center";
     
     const PREVIEW = document.createElement('ul');
@@ -115,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     MAIN_BLOCK.appendChild(PREVIEW);
 
     let fullViewImg = document.querySelector('.fullViewImg');
+
     MAIN_BLOCK.addEventListener('click', function(e) {
       if( e.target.nodeName !== "IMG") return;
         fullViewImg.src = e.target.dataset.fullview;
