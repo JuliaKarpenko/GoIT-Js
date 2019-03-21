@@ -126,6 +126,8 @@ function reset() {
   resultList.forEach(element => {
     laplist.removeChild(element);
   });
+resetBtn.setAttribute("disabled", "disabled");
+
 
 }
 
