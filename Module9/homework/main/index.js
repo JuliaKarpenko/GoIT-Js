@@ -43,21 +43,15 @@
     
   - Функционал кнопки button.js-take-lap при клике - сохранение текущего времени секундомера 
     в массив и добавление в ul.js-laps нового li с сохраненным временем в формате xx:xx.x
-  
-    <div class="stopwatch">
-    <p class="time js-time">00:00.0</p> 
-    <button class="btn js-start">Start</button>
-    <button class="btn js-take-lap">Lap</button>
-    <button class="btn js-reset">Reset</button>
-  </div>
-  <ul class="laps js-laps"></ul>
 
     */
+
 let clockface = document.querySelector(".js-time");
 let startBtn = document.querySelector(".js-start");
 let resetBtn = document.querySelector(".js-reset");
 let lapBtn = document.querySelector(".js-take-lap");
 let laplist = document.querySelector(".js-laps");
+let list;
 resetBtn.setAttribute("disabled", "disabled");
 
 const timer = {
@@ -130,12 +124,11 @@ function reset() {
   
   let resultList = document.querySelectorAll('.js-laps li');
   resultList.forEach(element => {
-    element.innerHTML= '';
+    laplist.removeChild(element);
   });
 
 }
 
-let list;
 function saveCurrentTime() {
   let currentTime = [];
   list = document.createElement('li');
@@ -148,6 +141,3 @@ function saveCurrentTime() {
 startBtn.addEventListener('click', startTimer);
 resetBtn.addEventListener('click', reset);
 lapBtn.addEventListener('click', saveCurrentTime);
-
-// Функционал кнопки button.js-take-lap при клике - сохранение текущего времени секундомера 
-// в массив и добавление в ul.js-laps нового li с сохраненным временем в формате xx:xx.x
