@@ -7,15 +7,15 @@
 
 let button = document.querySelector('.button');
 
-function addCounter(el) {
-    let count = el.textContent;
+// function addCounter(el) {
+//     let count = el.textContent;
 
-    return function () {
-        count ++;
-        el.textContent = count;
-        return el.textContent;
-    };
-}
+//     return function () {
+//         count ++;
+//         el.textContent = count;
+//         return el.textContent;
+//     };
+// }
 
 // let counter = addCounter(button);
 

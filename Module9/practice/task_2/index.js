@@ -31,3 +31,12 @@ function getFormattedTime(time) {
   console.log(
     getFormattedTime(1523621244239)
   ); // 07:24.2
+
+  // function getFormattedTime(time) {
+  //   let date = new Date(time);
+  //   minutes = ("0" + date.getMinutes()).slice(-2);
+  //   seconds = ("0" + date.getSeconds()).slice(-2);
+  //   milliseconds = parseInt(date.getMilliseconds() / 100);
+  
+  //   return `${minutes}:${seconds}.${milliseconds}`;
+  // }

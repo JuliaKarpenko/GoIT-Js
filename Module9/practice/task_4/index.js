@@ -1,3 +1,4 @@
+'use strict';
 /*
  * Есть переменная quantity хранящиая в себе
  * текущее количество единиц какого-то товара на складе.
@@ -20,6 +21,22 @@
 
 const DELAY = 1000;
 const quantity = 100;
+
+function processOrder (num) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isNaN(num)) {
+        reject("Некорректный ввод!");
+      } else {
+        quantity - num > 0 ? resolve ('Ваш заказ готов!') : reject("К сожалению на складе не достаточно товаров!"); 
+      }
+      }, DELAY);
+  }); 
+}
+
+// function processOrder(num) {
+//   return Promise.resolve(!isNaN(num) ? (quantity - num > 0 ? "Ваш заказ готов!" : "К сожалению на складе не достаточно товаров!") : 'Некорректный ввод!');
+// }
 
 // Вызовы функции для проверки
 processOrder(50)

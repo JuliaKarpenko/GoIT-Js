@@ -71,7 +71,7 @@ function startTimer() {
 }
 
 stopBtn.addEventListener('click', function () {
-  console.log("clear called")
+  console.log("clear called");
   clearInterval(timer.id);
 });
 

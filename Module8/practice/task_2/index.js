@@ -9,8 +9,8 @@ let button = document.querySelector('button[data-action="add"]');
 let result = document.querySelector('.result');
 
 function summ(el1, el2) {
-    result.textContent = +el1.value + (+el2.value);
-    return result.textContent;
+  result.textContent = +el1.value + (+el2.value);
+  return result.textContent;
 }
 
 button.addEventListener('click', () => summ(firstInput, secondInput));

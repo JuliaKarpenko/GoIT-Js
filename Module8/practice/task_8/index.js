@@ -13,4 +13,4 @@ let inputValue = document.querySelector('.input-value');
 
 input.addEventListener('focus', () => message.textContent= "Input is in focus!");
 
-input.addEventListener('keypress', () => inputValue.textContent = input.value);
+input.addEventListener('keypress', () => inputValue.textContent = `Current input value: ${input.value}`);

@@ -8,9 +8,10 @@
 let parentElem = document.querySelector('.list');
 
 parentElem.addEventListener("click", () => event.target.parentNode.remove());
+// parentElem.addEventListener("click", () => removeElem(parentElem));
 
 // function removeElem(e) {
-//     e.preventDefault();
 //     const target = event.target;
-//     console.log(target.parentNode.remove());
+//     if( target.nodeName !== "BUTTON") return;
+//     target.parentNode.remove();
 // }

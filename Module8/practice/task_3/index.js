@@ -7,40 +7,66 @@
   - Привяжите вызовы методов и значение счетчика к разметке
 */
 
-let btnAdd = document.querySelector('button[data-action="add"]');
-let btnSub = document.querySelector('button[data-action="sub"]');
-let span = document.querySelector('.value');
+// let btnAdd = document.querySelector('button[data-action="add"]');
+// let btnSub = document.querySelector('button[data-action="sub"]');
+// let span = document.querySelector('.value');
 
 // btnAdd.addEventListener('click' , () => span.textContent++);
 // btnSub.addEventListener('click' , () => span.textContent--);
 
 // with class
+
+// class Counter {
+//   constructor(onChange) {
+//     this.value = 0;
+//     this.onChange = onChange;
+//     this.increment = this.increment.bind(this);
+//     this.decrement = this.decrement.bind(this);
+//     }
+
+//   increment () {
+//     this.value++;
+//     this.onChange(this.value);
+//   }
+
+//   decrement () {
+//     this.value-=1;
+//     this.onChange(this.value);
+//   }
+// }
+
+// function changeValue(value) {
+//   span.textContent = value;
+// }
+
+// const counter = new Counter(changeValue);
+
+// btnAdd.addEventListener('click', counter.increment);
+// btnSub.addEventListener('click', counter.decrement);
+
+
+//---------------or------------------
+
+
 class Counter {
   constructor(onChange) {
     this.value = 0;
     this.onChange = onChange;
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-    }
-
-  increment () {
-    this.value++;
-    this.onChange(this.value);
   }
-
-  decrement () {
-    this.value-=1;
-    this.onChange(this.value);
+  
+  get increment(){
+    this.onChange(this.value ++ );
   }
-
+  
+  get decrement(){
+    this.onChange(this.value --);
+  }
 }
 
-function changeValue(value) {
-  span.textContent = value;
-}
+const value = document.querySelector('.value');
 
-const counter = new Counter(changeValue);
+const counter = new Counter((res) => value.innerHTML = res);
 
-btnAdd.addEventListener('click', counter.increment);
-btnSub.addEventListener('click', counter.decrement);
+const onClickHandler = ({target}) => target.dataset.action === 'add'? counter.increment : counter.decrement;
 
+document.querySelectorAll('.btn').forEach(btn => btn.addEventListener('click', onClickHandler));
