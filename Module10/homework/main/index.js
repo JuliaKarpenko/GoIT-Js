@@ -28,38 +28,139 @@ const btnGetAdd = document.querySelector("#js-btn-add");
 const btnGetRemove = document.querySelector("#js-btn-remove");
 const btnGetUpdate = document.querySelector("#js-btn-update");
 
+const setUsers = document.querySelector(".setUsers");
+const setId = document.querySelector(".setId");
+const addUserInner = document.querySelector('.addUser');
+const removeUserInner = document.querySelector('.remove');
+const updateUserInner = document.querySelector('.update');
 
-// const setUsers = document.querySelector("#");
-// const setId = document.querySelector("#");
-// const setAdd = document.querySelector("#");
-// const setUsers = document.querySelector("#");
+
+let API_URL = `https://test-users-api.herokuapp.com/users/`;
 
 function getAllUsers() {
-    console.log('getAllUsers');
+
+    fetch(API_URL, {
+        method: 'Get',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        newData = data.data;
+        newData.forEach(i => {
+            setUsers.innerHTML = newData.reduce((acc , i) => acc + `<div class="user-inner"><p>Age: ${i.age}</p><p> Id: ${i.id}</p><p>Name: ${i.name}</p></div> `, '' );
+        });
+    })
+    .catch( setUsers.innerHTML = `<div class="user-inner">К сожалению пользователей нет</div>`);
 }
 
-function getUserById() {
-    console.log('getUserById');
+function getUserById(id) {
+    let API_URL = `https://test-users-api.herokuapp.com/users/${id}`;
+    fetch(API_URL, {
+        method: 'Get',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        newData = data.data;
+        setId.innerHTML =  `<div class="user-inner"><p>Age: ${newData.age}</p><p> Id: ${newData.id}</p><p>Name: ${newData.name}</p></div>`;
+    })
+    .catch( setId.innerHTML = "К сожалению пользователей нет");
 }
 
-function addUser() {
-    console.log('addUser');
+function addUser(name, age) {
+    fetch('https://test-users-api.herokuapp.com/users', {
+        method: 'POST',
+        body: JSON.stringify({name: name, age: age}),
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+
+    fetch(API_URL, {
+        method: 'Get',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        newData = data.data;
+        newData.forEach(i => {
+            addUserInner.innerHTML = newData.reduce((acc , i) => acc + `<div class="user-inner"><p>Age: ${i.age}</p><p> Id: ${i.id}</p><p>Name: ${i.name}</p></div> `, '' );
+        });
+    })
+    .catch( addUserInner.innerHTML = `<div class="user-inner">К сожалению пользователей нет</div>`);
 }
 
-function removeUser() {
-    console.log('removeUser');
+function removeUser(id) {
+    fetch(`https://test-users-api.herokuapp.com/users/${id}`, {
+        method: "DELETE"
+    })
+    .then(() => console.log('success'))
+    .catch(error => console.log('ERROR' + error));
+
+    fetch(API_URL, {
+        method: 'Get',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+        newData = data.data;
+        newData.forEach(i => {
+            removeUserInner.innerHTML = newData.reduce((acc , i) => acc + `<div class="user-inner"><p>Age: ${i.age}</p><p> Id: ${i.id}</p><p>Name: ${i.name}</p></div> `, '' );
+        });
+    })
+    .catch( removeUserInner.innerHTML = `<div class="user-inner">К сожалению пользователей нет</div>`);
 }
 
-function updateUser() {
-    console.log('updateUser');
+function updateUser(id, name, age) {
+    fetch(`https://test-users-api.herokuapp.com/users/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({name: name, age: age}),
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+
+    fetch(`https://test-users-api.herokuapp.com/users/`, {
+        method: "Get",
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        newData = data.data;
+        newData.forEach( i => {
+            updateUserInner.innerHTML = newData.reduce((acc , i) => acc + `<div class="user-inner"><p>Age: ${i.age}</p><p> Id: ${i.id}</p><p>Name: ${i.name}</p></div> `, '' );
+        })
+        
+    })
+    .catch( updateUserInner.innerHTML = `<div class="user-inner">К сожалению пользователей нет</div>`);
+
 }
 
 
 
 btnGetUsers.addEventListener("click", getAllUsers);
-btnGetId.addEventListener("click", getUserById);
-btnGetAdd.addEventListener("click", addUser);
-btnGetRemove.addEventListener("click", removeUser);
-btnGetUpdate.addEventListener("click", updateUser);
+btnGetId.addEventListener("click", () => getUserById('5c961e32c2fbc500140de847'));
+btnGetAdd.addEventListener("click", () => addUser('Optimus Prime', 32));
+btnGetRemove.addEventListener("click", () => removeUser('5c96319ac2fbc500140de851'));
+btnGetUpdate.addEventListener("click", () => updateUser('5c961e32c2fbc500140de847', 'BumblebeeNew', 25));
 
 
