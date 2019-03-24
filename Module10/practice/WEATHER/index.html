@@ -8,18 +8,20 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
-    <div class="location">
-        <h1 class="location-timezone">Timezone</h1>
-        <p><canvas class="icon" id="cloudy" width="70" height="70"></canvas></p>
-    </div>
-    <div class="temperature">
-        <div class="temperature-section">
-            <h2 class="temperature-degree">34</h2>
-            <span class="temperature-unit">F</span>
+    <div class="wrapper">
+        <div class="location">
+            <h1 class="location-timezone">Timezone</h1>
+            <p><canvas class="icon" id="icon-header" width="70" height="70"></canvas></p>
         </div>
-        <div class="temperature-description">Cold</div>
+        <div class="temperature">
+            <div class="temperature-section">
+                <h2 class="temperature-degree">34</h2>
+            </div>
+            <div class="temperature-description">Cold</div>
+        </div>
+        <div class="weather-for-a-week"></div>
     </div>
-    <div class="weather-for-a-week"></div>
+    
     <script type="text/javascript" src="./index.js"></script>
     <script type="text/javascript" src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 </body>
