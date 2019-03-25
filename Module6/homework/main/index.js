@@ -170,7 +170,7 @@ Hamburger.TOPPINGS = {
     [Hamburger.TOPPING_SAUCE]: {
         price: 15,
         calories: 5,
-    },
+    }, 
 };
 
 /* Вот как может выглядеть использование этого класса */
