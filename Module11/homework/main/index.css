@@ -1,0 +1,23 @@
+.js-form {
+    display: flex;
+    max-width: 50%;
+    align-items: center;
+}
+
+.js-form section {
+    flex: 1;
+}
+
+.js-result {
+    display: flex;
+    flex-wrap: wrap;
+}
+.js-result .wrapper {
+    max-width: 200px;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 2px;
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    background-color: rgb(237, 236, 237);
+    
+}
