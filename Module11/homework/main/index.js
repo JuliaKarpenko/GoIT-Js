@@ -187,7 +187,6 @@ function filter(event) {
     getInputsResult();
     setAttr(laptops);
     displaySelection();
-    console.log(laptops);
 }
 
 function reset() {
