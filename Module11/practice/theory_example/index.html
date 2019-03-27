@@ -8,7 +8,18 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
-
+    <template id="menu-template">
+        <div class="menu">
+            <h3 class="menu-title">{{title}}</h3>
+            <ul class="menu-list">
+            {{#each items}}
+                <li class="menu-item">{{this}}</li>
+            {{/each}}
+            </ul>
+        </div>
+    </template>
     <script type="text/javascript" src="./index.js"></script>
+    <script type="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js" src="./index.js"></script>
+
 </body>
 </html>

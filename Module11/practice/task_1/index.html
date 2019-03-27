@@ -8,7 +8,42 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
+<!-- Разметка элемента списка
 
-    <script type="text/javascript" src="./index.js"></script>
+<li class="item">
+  <p class="name"><strong>Name:</strong> </p>
+  <p class="quantity"><strong>Quantity:</strong> </p>
+</li>
+ -->
+
+ <template id="template">
+   {{#each data}}
+    <li class="item">
+      <p class="name"><strong>{{name}}: {{this}}</strong> </p>
+      <p class="quantity"><strong>{{@quantity}}: {{this}}</strong> </p>
+    </li>
+    {{/each}}
+  </template>
+
+<!-- Контейнер в который рендерить -->
+
+  <ul class="products">
+  </ul>
+
+
+  <!-- <ul class="products"></ul>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script type="hbs/template" id="productItem">
+      <li class="item">
+          <p class="name"><strong>Name:{{name}}</strong> </p>
+          <p class="quantity"><strong>Quantity:{{quantity}}</strong> </p>
+        </li>
+    </script> -->
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
+    
 </body>
 </html>

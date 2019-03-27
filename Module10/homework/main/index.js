@@ -148,7 +148,7 @@ function updateUser(id, name, age) {
         newData = data.data;
         newData.forEach( i => {
             updateUserInner.innerHTML = newData.reduce((acc , i) => acc + `<div class="user-inner"><p>Age: ${i.age}</p><p> Id: ${i.id}</p><p>Name: ${i.name}</p></div> `, '' );
-        })
+        });
         
     })
     .catch( updateUserInner.innerHTML = `<div class="user-inner">К сожалению пользователей нет</div>`);
