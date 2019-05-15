@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,53 @@
     <title>Document</title>
     <link href="index.css" rel="stylesheet">
 </head>
+
 <body>
+    <button class="js-open_modal">open modal</button>
+    <button class="js-open_modal">open modal</button>
+    <button class="js-open_modal">open modal</button>
+    <button class="js-open_modal">open modal</button>
+
+    <div class="modal_container_wrapper js_container_wrapper close_modal">
+        <div class="modal_container_bg">
+            <div class="close_modal_icon js_close_icon"></div>
+            <div class="form__content js_form__content">
+                <h2 class="form__title">Подписаться на изменения</h2>
+                <form class="form js_form">
+                    <span class="form__span">
+                        <input class="form__field js_input" id="Full-name" type="text" name="name" pattern="^[^0-9]+$"
+                            required>
+                        <label class="form__inner" for="Full-name">
+                            <span class="form__content_label">Name</span>
+                        </label>
+                    </span>
+
+                    <span class="form__span">
+                        <input class="form__field js_input" id="email" type="email" name="name" required>
+                        <label class="form__inner" for="email">
+                            <span class="form__content_label">Email</span>
+                        </label>
+                    </span>
+                    <span class="form__span">
+                        <input class="form__field js_input" id="telephone" type="text" name="name"
+                            pattern="^[^A-Za-zА-Яа-яЁё]+$" required>
+                        <label class="form__inner" for="telephone">
+                            <span class="form__content_label">Phone</span>
+                        </label>
+                    </span>
+                    <input type="submit" value="submit" class="form__button_submit">
+                </form>
+            </div>
+            <div class="thanks_message_modal js_thanks_message_modal">
+                <h2 class="thanks_message_modal_title">Спасибо</h2>
+                <p class="thanks_message_modal_content">Теперь вы будете получать уведомления о изменениях в "фильме"ю
+                    Вы всегда сможите отписаться перейдя по <a href="">ссылке</a> в письме.</p>
+                <button class="form__button_submit form__button_submit--bottom js_submit_ok">ok</button>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="./index.js"></script>
 </body>
+
 </html>
