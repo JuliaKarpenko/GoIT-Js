@@ -1,14 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="index.css" rel="stylesheet">
+    <title></title>
+    <style type="text/css"> 
+        button {
+            display: block;
+            float: left;
+            width: 43px;
+            height: 43px;
+        }
+        div {
+            height: 43px;
+        }
+        #calcString {
+            display: block;
+            height: 43px;
+            width: 170px;
+            border: 1px solid #333;
+        }
+    </style>
 </head>
 <body>
+    <div id="calcString"><span id="result"></span></div>
+    <div>
+        <button class="numbers">1</button>
+        <button class="numbers">2</button>
+        <button class="numbers">3</button>
+        <button class="action">*</button>
+    </div>
+    <div>
+        <button class="numbers">4</button>
+        <button class="numbers">5</button>
+        <button class="numbers">6</button>
+        <button class="action">/</button>
+    </div>
+    <div>
+        <button class="numbers">7</button>
+        <button class="numbers">8</button>
+        <button class="numbers">9</button>
+        <button class="action">+</button>
+    </div>
+    <div>
+        <button id="c">C</button>
+        <button class="numbers">0</button>
+        <button class="action">=</button>
+        <button class="numbers">.</button>
+    </div>  
 
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript">
+   var numbArr = document.getElementsByClassName('numbers');
+        var sightsArr = document.getElementsByClassName('action');
+        var buttons = document.getElementsByTagName('button');
+        var result = document.getElementById('result');
+        var first, second, sign, temp = "";
+        var calcString = document.getElementById('calcString');
+        for(val = 0; val < buttons.length; val++ ){
+            buttons[val].addEventListener('click', printB);
+            }
+        
+        function printB(){
+            if(this.innerHTML == "+" || this.innerHTML == "*" || this.innerHTML == "/" ){
+                first = temp;
+                sign = this.innerHTML;
+                calcString.innerHTML += sign;
+                temp ="";
+                console.log(first);
+            }
+            else if(this.innerHTML == "="){
+                second = temp;
+                calcString.innerHTML += this.innerHTML;
+                switch(sign){
+                    case "+":
+                    //console.log(parseFloat(first) + parseFloat(second));
+                    calcString.innerHTML += parseFloat(first) + parseFloat(second);
+                    break;
+                    case "*":
+                    calcString.innerHTML += parseFloat(first) * parseFloat(second);
+                    break;
+                    case "/":
+                    calcString.innerHTML += parseFloat(first) / parseFloat(second);
+                    break;
+                }
+                console.log(second);
+            }
+            else{
+                temp += this.innerHTML;
+                calcString.innerHTML += this.innerHTML;
+            }
+            
+        }
+        var c = document.querySelector('#c');
+        c.addEventListener('click', deleteAll);
+        function deleteAll() {
+            calcString.innerHTML = '';
+        }
+    </script>
 </body>
 </html>

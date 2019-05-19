@@ -26,6 +26,25 @@ const imagesList = [
 // В работе используем только нативный джс
 
 
+// const gallery = document.querySelector('.gallery');
+// const PAUSE = 2000;
+// let newList = imagesList.splice(0, 3);
+// gallery.innerHTML = newList.reduce((acc, index) => acc + `<div class="wrapper" ><img src="${index}" alt="img" style="height: 100px; width: auto"></img></div>`, '');
+
+// const renderImage = (arr) => {
+//   let sliceElem = arr.splice(0, 3);
+
+//   newList = newList.concat(sliceElem);
+//   gallery.innerHTML = newList.reduce((acc, index) => acc + `<div class="wrapper" ><img class="img" src="${index}" alt="img"></img></div>`, '');
+// };
+
+// const getItem = setInterval(function() {
+//   renderImage(imagesList); 
+//   if( imagesList.length == 0 ) {
+//     clearInterval(getItem);
+//   }
+// }, 2000);
+
 const gallery = document.querySelector('.gallery');
 const PAUSE = 2000;
 let newList = imagesList.splice(0, 3);
@@ -33,15 +52,20 @@ gallery.innerHTML = newList.reduce((acc, index) => acc + `<div class="wrapper" >
 
 const renderImage = (arr) => {
   let sliceElem = arr.splice(0, 3);
-
   newList = newList.concat(sliceElem);
   gallery.innerHTML = newList.reduce((acc, index) => acc + `<div class="wrapper" ><img class="img" src="${index}" alt="img"></img></div>`, '');
 };
 
-const getItem = setInterval(function() {
-  renderImage(imagesList); 
-  if( imagesList.length == 0 ) {
-    clearInterval(getItem);
-  }
-}, 2000);
+const fetchImagesAsync = (arr) => {
+  return new Promise(() => {
+    const getItem = setInterval(function () {
+      renderImage(arr);
+      if (arr.length == 0) {
+        clearInterval(getItem);
+      }
+    }, 2000);
+  });
+};
 
+
+fetchImagesAsync(imagesList);
